@@ -47,6 +47,13 @@ void BinaryTree::addNode(int data)
 	}
 }
 
+void BinaryTree::addNewNode(int data)
+{
+	Node* newNode = new Node(data);
+	Node* doubleRoot = root;
+	
+}
+
 void BinaryTree::deleteNode(int key)
 {
 	Node* newNode = search(key);

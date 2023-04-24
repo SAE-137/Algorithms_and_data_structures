@@ -31,6 +31,7 @@ public:
 
 	void printTree(Node* root, Trunk* prev, bool isLeft);
 	void addNode(int data);
+	void addNewNode(int data);
 	void insert(int key, Node* leaf);
 	void insert(int key);
 	void destroy_tree(Node* leaf);
