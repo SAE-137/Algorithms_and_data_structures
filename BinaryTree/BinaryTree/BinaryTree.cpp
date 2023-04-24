@@ -47,6 +47,63 @@ void BinaryTree::addNode(int data)
 	}
 }
 
+void BinaryTree::deleteNode(int key)
+{
+	Node* newNode = search(key);
+	if (newNode != nullptr)
+	{
+		if (isLeaf(newNode))
+		{
+			deleteNode(key);
+		}
+
+		else if (newNode->right != nullptr && newNode->left != nullptr)
+		{
+			Node* leaf = newNode;
+			for (leaf; leaf != nullptr;)
+				leaf = leaf->right;
+			if (leaf->getParent()->right == leaf)
+				leaf->getParent()->right = nullptr;
+			else leaf->getParent()->left = nullptr;
+
+			if(newNode->getParent()->right = newNode)
+				newNode->getParent()->right = leaf;
+			else newNode->getParent()->left = leaf;
+
+			leaf->setParent(newNode->getParent());
+			leaf->setLeftChild(newNode->getLeftChild());
+			leaf->setRightChild(newNode->getRightChild());
+		}
+
+		else
+		{
+			if (newNode->right != nullptr && newNode->left == nullptr)
+			{
+				newNode->right->setParent(newNode->getParent());
+
+				if (newNode->getParent()->right == newNode)
+				{
+					newNode->getParent()->right == newNode->right;
+				}
+				
+			}
+
+			else
+			{
+				newNode->left->setParent(newNode->getParent());
+
+				if (newNode->getParent()->left == newNode)
+				{
+					newNode->getParent()->left == newNode->left;
+				}
+				
+			}
+
+		}
+		delete newNode;
+	}
+}
+
 Node* BinaryTree::getRoot()
 {
 	return this->root;
@@ -285,7 +342,7 @@ int BinaryTree::nodeLevel(int key)
 
 bool BinaryTree::isLeaf(Node* node)
 {
-	if (node->getRightChild() == nullptr && node->getLeftChild() == nullptr && node->getParent() != nullptr)
+	if (node->getRightChild() == nullptr && node->getLeftChild() == nullptr)
 		return true;
 	return false;
 }

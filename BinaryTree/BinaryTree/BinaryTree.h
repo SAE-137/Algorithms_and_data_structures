@@ -38,6 +38,7 @@ public:
 	void showTrunks(Trunk* p);
 	void printLeafs(Node* root);
 	void printAllLeafs();
+	void deleteNode(int key);
 
 	//void Copy(Node*& to, const Node* from);
 	int maxKey(Node* node);

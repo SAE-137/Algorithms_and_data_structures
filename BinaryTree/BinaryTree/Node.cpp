@@ -49,6 +49,7 @@ void Node::setRightChild(Node* right)
 void Node::setParent(Node* parent)
 {
 	this->parent = parent;
+	
 }
 
 void Node::setKey(int key)
