@@ -50,8 +50,63 @@ void BinaryTree::addNode(int data)
 void BinaryTree::addNewNode(int data)
 {
 	Node* newNode = new Node(data);
-	Node* doubleRoot = root;
+	if (root == nullptr) {
+		root = newNode;
+	}
+	else {
+		Node* focusNode = root;
+		while (true)
+		{
+
+			if (focusNode->getLeftChild() == nullptr && focusNode->getRightChild() == nullptr)
+			{
+				if (rand() % 2) focusNode->setLeftChild(newNode);
+				else focusNode->setRightChild(newNode);
+				return;
+			}
+
+			if (focusNode->getLeftChild() != nullptr && focusNode->getRightChild() == nullptr)
+			{
+				focusNode->setRightChild(newNode);
+				return;
+			}
+
+			if (focusNode->getLeftChild() == nullptr && focusNode->getRightChild() != nullptr)
+			{
+				focusNode->setLeftChild(newNode);
+				return;
+			}
+			if (rand() % 2) focusNode = focusNode->getRightChild();
+			else focusNode = focusNode->getLeftChild();
+			
+		}
+	}
 	
+}
+
+Node* BinaryTree::crossingTree(Node* node)
+{
+	
+	if(node == NULL)
+		return NULL;
+
+	Node* newnode = new Node(node->getKey());
+	newnode->left = crossingTree(node->left);
+	newnode->right = crossingTree(node->right);
+
+	return newnode;
+}
+
+BinaryTree* BinaryTree::copyTree(Node* node)
+{
+	
+	this->setRoot(crossingTree(node));
+	return this;
+}
+
+void BinaryTree::setRoot(Node* newroot)
+{
+	root == newroot;
 }
 
 void BinaryTree::deleteNode(int key)
@@ -90,7 +145,7 @@ void BinaryTree::deleteNode(int key)
 
 				if (newNode->getParent()->right == newNode)
 				{
-					newNode->getParent()->right == newNode->right;
+					newNode->getParent()->right = newNode->right;
 				}
 				
 			}
@@ -101,7 +156,7 @@ void BinaryTree::deleteNode(int key)
 
 				if (newNode->getParent()->left == newNode)
 				{
-					newNode->getParent()->left == newNode->left;
+					newNode->getParent()->left = newNode->left;
 				}
 				
 			}
@@ -356,15 +411,15 @@ bool BinaryTree::isLeaf(Node* node)
 
 void BinaryTree::printLeafs(Node* node)
 {
-	if (isLeaf(node) && node != nullptr)
-	{
+	if (!node) return;
+
+	printLeafs(node->left);
+
+	if ((node->left == NULL) && (node->right == NULL))
+
 		std::cout << node->getKey() << " ";
-	}
-	else if (node != nullptr)
-	{
-		printLeafs(root->left);
-		printLeafs(root->right);
-	}
+
+	printLeafs(node->right);
 }
 
 Node* BinaryTree::copy(Node* node)

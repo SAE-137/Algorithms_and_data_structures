@@ -39,11 +39,13 @@ Node* Node::getParent()
 void Node::setLeftChild(Node* left)
 {
 	this->left = left;
+	left->parent = this;
 }
 
 void Node::setRightChild(Node* right)
 {
 	this->right = right;
+	right->parent = this;
 }
 
 void Node::setParent(Node* parent)

@@ -30,7 +30,7 @@ public:
 	int heigh(Node* root);
 
 	void printTree(Node* root, Trunk* prev, bool isLeft);
-	void addNode(int data);
+	void addNode(int data); // search
 	void addNewNode(int data);
 	void insert(int key, Node* leaf);
 	void insert(int key);
@@ -40,6 +40,7 @@ public:
 	void printLeafs(Node* root);
 	void printAllLeafs();
 	void deleteNode(int key);
+	void setRoot(Node* root);
 
 	//void Copy(Node*& to, const Node* from);
 	int maxKey(Node* node);
@@ -56,7 +57,9 @@ public:
 	Node* search(int key);
 	Node* copy(Node* node);
 	Node* getRoot();
+	Node* crossingTree(Node* root);
 
+	BinaryTree* copyTree(Node* node);
 	BinaryTree& operator=(const BinaryTree& obj);
 	//BinaryTree& operator=(const BinaryTree& obj);
 
