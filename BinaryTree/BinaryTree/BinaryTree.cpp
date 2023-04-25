@@ -87,8 +87,8 @@ void BinaryTree::addNewNode(int data)
 Node* BinaryTree::crossingTree(Node* node)
 {
 	
-	if(node == NULL)
-		return NULL;
+	if(node == nullptr)
+		return nullptr;
 
 	Node* newnode = new Node(node->getKey());
 	newnode->left = crossingTree(node->left);
@@ -106,7 +106,7 @@ BinaryTree* BinaryTree::copyTree(Node* node)
 
 void BinaryTree::setRoot(Node* newroot)
 {
-	root == newroot;
+	this->root = newroot;
 }
 
 void BinaryTree::deleteNode(int key)
