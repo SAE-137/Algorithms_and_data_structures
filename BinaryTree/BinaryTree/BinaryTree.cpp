@@ -54,6 +54,8 @@ void BinaryTree::addNode(int data)
 	
 }
 
+
+
 Node* BinaryTree::crossingTree(Node* node)
 {
 	

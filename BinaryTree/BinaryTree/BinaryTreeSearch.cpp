@@ -2,6 +2,15 @@
 #include"Node.h"
 #include "BinaryTree.h"
 
+BinaryTreeSearch::BinaryTreeSearch()
+{
+
+}
+
+BinaryTreeSearch::~BinaryTreeSearch()
+{
+
+}
 
 
 
@@ -35,4 +44,33 @@ void BinaryTreeSearch::addNode(int data)
 			}
 		}
 	}
+}
+
+Node* BinaryTreeSearch::copy(Node* node)
+{
+
+}
+
+BinaryTreeSearch* BinaryTreeSearch::copyTree(Node* node)
+{
+
+}
+
+void BinaryTreeSearch::deleteNode(int key)
+{
+
+}
+
+Node* BinaryTreeSearch::search(int key)
+{
+	if (this->root != nullptr)
+	{
+		if (key == this->root->m_key)
+			return root;
+		if (key < root->m_key)
+			this->root->left = search(key);
+		else
+			this->root->right = search(key);
+	}
+	else return nullptr;
 }

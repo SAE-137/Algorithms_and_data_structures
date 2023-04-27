@@ -39,7 +39,7 @@ public:
 	void showTrunks(Trunk* p);
 	void printLeafs(Node* root);
 	void printAllLeafs();
-	void deleteNode(int key);
+	virtual void deleteNode(int key);
 	void setRoot(Node* root);
 
 	//void Copy(Node*& to, const Node* from);
@@ -47,6 +47,7 @@ public:
 	int minKey(Node* node);
 	int tree_sum(Node* tr);
 	int nodeLevel(int key);
+	
 
 	bool destroy_tree(int key);
 	bool isEmpty();
@@ -54,8 +55,8 @@ public:
 	bool isBalanced(Node* root);
 
 	Node* search(int key, Node* leaf);
-	Node* search(int key);
-	Node* copy(Node* node);
+	virtual Node* search(int key);
+	virtual Node* copy(Node* node);
 	Node* getRoot();
 	Node* crossingTree(Node* root);
 

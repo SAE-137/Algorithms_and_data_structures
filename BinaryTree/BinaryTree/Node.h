@@ -1,4 +1,6 @@
 #pragma once
+#include "BinaryTreeSearch.h"
+
 class Node
 {
 public:
@@ -23,6 +25,8 @@ public:
 	Node* right = nullptr;
 	Node* left = nullptr;
 	
+
+	friend class BinaryTreeSearch;
 
 };
 
