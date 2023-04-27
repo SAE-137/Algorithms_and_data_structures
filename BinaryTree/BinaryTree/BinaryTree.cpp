@@ -15,39 +15,9 @@ BinaryTree::~BinaryTree()
 	this->ultimateSuperMegaFullDestroy();
 }
 
+
+
 void BinaryTree::addNode(int data)
-{
-	Node* newNode = new Node(data);
-	if (root == nullptr) {
-		root = newNode;
-	}
-	else {
-		Node* focusNode = root;
-		Node* parent;
-		while (true) {
-			parent = focusNode;
-
-			if (data < focusNode->m_key) {
-				focusNode = focusNode->left;
-				if (focusNode == nullptr) {
-					parent->left = newNode;
-					newNode->parent = parent;
-					return;
-				}
-			}
-			else {
-				focusNode = focusNode->right;
-				if (focusNode == nullptr) {
-					parent->right = newNode;
-					newNode->parent = parent;
-					return;
-				}
-			}
-		}
-	}
-}
-
-void BinaryTree::addNewNode(int data)
 {
 	Node* newNode = new Node(data);
 	if (root == nullptr) {
@@ -99,7 +69,6 @@ Node* BinaryTree::crossingTree(Node* node)
 
 BinaryTree* BinaryTree::copyTree(Node* node)
 {
-	
 	this->setRoot(crossingTree(node));
 	return this;
 }
@@ -444,7 +413,7 @@ bool BinaryTree::isBalanced(Node* root)
 {
 	int ltree;
 	int rtree;
-	if (root == NULL)
+	if (root == nullptr)
 		return true;
 	ltree = heigh(root->left);
 	rtree = heigh(root->right);
