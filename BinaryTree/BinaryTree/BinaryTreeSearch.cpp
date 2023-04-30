@@ -9,7 +9,7 @@ BinaryTreeSearch::BinaryTreeSearch()
 
 BinaryTreeSearch::~BinaryTreeSearch()
 {
-
+	destroy_tree(root);
 }
 
 
@@ -48,12 +48,43 @@ void BinaryTreeSearch::addNode(int data)
 
 Node* BinaryTreeSearch::copy(Node* node)
 {
+	if (node == nullptr)
+		return nullptr;
 
+	node = new Node(node->m_key);
+	node->left = copy(node->left);
+	node->right = copy(node->right);
+
+	return node;
+}
+
+Node* BinaryTreeSearch::crossingTree(Node* node)
+{
+
+	if (node == nullptr)
+		return nullptr;
+
+	Node* newnode = new Node(node->getKey());
+	newnode->left = crossingTree(node->left);
+	newnode->right = crossingTree(node->right);
+
+	return newnode;
 }
 
 BinaryTreeSearch* BinaryTreeSearch::copyTree(Node* node)
 {
+	this->setRoot(crossingTree(node));
+	return this;
+}
 
+void BinaryTreeSearch::destroy_tree(Node* leaf)
+{
+	if (leaf != nullptr)
+	{
+		destroy_tree(leaf->left);
+		destroy_tree(leaf->right);
+		delete leaf;
+	}
 }
 
 Node* BinaryTreeSearch::deleteNode(Node* root, int key)
@@ -67,7 +98,7 @@ Node* BinaryTreeSearch::deleteNode(Node* root, int key)
 				return root->left ? root->left : root->right;   
 																
 			Node* newNode = root->left;                       
-			while (newNode->right != NULL) newNode = newNode->right;
+			while (newNode->right != nullptr) newNode = newNode->right;
 			root->m_key = newNode->m_key;
 			root->left = deleteNode(root->left, newNode->m_key);
 		}
@@ -118,4 +149,9 @@ int BinaryTreeSearch::nodeLevel(int key)
 		i++;
 	}
 	return i + 1;
+}
+
+BinaryTreeSearch& BinaryTreeSearch::operator=(const BinaryTreeSearch& obj)
+{
+
 }

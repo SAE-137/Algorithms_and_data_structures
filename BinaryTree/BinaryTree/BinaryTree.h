@@ -40,10 +40,10 @@ public:
 
 	//void Copy(Node*& to, const Node* from);
 	int heigh(Node* root);
-	int maxKey(Node* node);
-	int minKey(Node* node);
+	virtual int maxKey(Node* node);
+	virtual int minKey(Node* node);
 	int tree_sum(Node* tr);
-	int nodeLevel(int key);
+	virtual int nodeLevel(int key);
 	
 	bool destroy_tree(int key);
 	bool isEmpty();

@@ -9,12 +9,18 @@ class BinaryTreeSearch : BinaryTree
 	~BinaryTreeSearch(); // дописать 
 
 	void addNode(int data) override;
-	Node* deleteNode(Node* root, int key) override; // дописать 
+	void destroy_tree(Node* leaf);
 
+	int maxKey(Node* node) override;
+	int minKey(Node* node) override;
+	int nodeLevel(int key) override;
 
-	Node* copy(Node* node) override; // дописать
+	Node* crossingTree(Node* node); //переписать
+	Node* copy(Node* node) override; 
 	Node* search(int key) override;
+	Node* deleteNode(Node* root, int key) override;
 
-	BinaryTreeSearch* copyTree(Node* node); // дописать 
+	BinaryTreeSearch* copyTree(Node* node); 
+	BinaryTreeSearch& operator=(const BinaryTreeSearch& obj) //дописать;
 };
 
