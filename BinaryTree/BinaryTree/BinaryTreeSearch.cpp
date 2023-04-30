@@ -56,10 +56,24 @@ BinaryTreeSearch* BinaryTreeSearch::copyTree(Node* node)
 
 }
 
-void BinaryTreeSearch::deleteNode(int key)
+Node* BinaryTreeSearch::deleteNode(Node* root, int key)
 {
-
+	if (root)
+		if (key < root->m_key) root->left = deleteNode(root->left, key);     
+		else if (key > root->m_key) root->right = deleteNode(root->right, key);
+		else {
+			if (!root->left && !root->right) return nullptr;          
+			if (!root->left || !root->right)
+				return root->left ? root->left : root->right;   
+																
+			Node* newNode = root->left;                       
+			while (newNode->right != NULL) newNode = newNode->right;
+			root->m_key = newNode->m_key;
+			root->left = deleteNode(root->left, newNode->m_key);
+		}
+	return root;
 }
+
 
 Node* BinaryTreeSearch::search(int key)
 {
@@ -74,3 +88,4 @@ Node* BinaryTreeSearch::search(int key)
 	}
 	else return nullptr;
 }
+
