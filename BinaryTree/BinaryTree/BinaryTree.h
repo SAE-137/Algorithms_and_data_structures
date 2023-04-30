@@ -26,7 +26,7 @@ public:
 	BinaryTree(const BinaryTree& obj);
 	~BinaryTree();
 
-	virtual void deleteNode(int key);
+	virtual Node* deleteNode(Node* root, int key);
 	virtual void addNode(int data);
 	void printTree(Node* root, Trunk* prev, bool isLeft);
 	void insert(int key, Node* leaf);

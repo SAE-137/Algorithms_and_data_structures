@@ -7,7 +7,7 @@ int main()
 
 	BinaryTree a;
 	for (int i = 0; i < 20; i++)
-		a.addNewNode(rand() % 100);
+		a.addNode(rand() % 100);
 	a.printTree(a.getRoot(), nullptr, false);
 	
 

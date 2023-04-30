@@ -89,3 +89,33 @@ Node* BinaryTreeSearch::search(int key)
 	else return nullptr;
 }
 
+int BinaryTreeSearch::maxKey(Node* node)
+{
+	if (node) 
+	{
+		for (node; node != nullptr; node = node->getRightChild()) return node->getKey();
+	}
+}
+
+int BinaryTreeSearch::minKey(Node* node)
+{
+	if (node)
+	{
+		for (node; node != nullptr; node = node->getLeftChild()) return node->getKey();
+	}
+}
+
+int BinaryTreeSearch::nodeLevel(int key)
+{
+	int i = 0;
+	if (!search(key))
+	{
+		return i;
+	}
+	Node* newNode = search(key);
+	for (newNode; newNode != root; newNode = newNode->getParent())
+	{
+		i++;
+	}
+	return i + 1;
+}

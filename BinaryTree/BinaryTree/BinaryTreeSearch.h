@@ -9,7 +9,7 @@ class BinaryTreeSearch : BinaryTree
 	~BinaryTreeSearch(); // дописать 
 
 	void addNode(int data) override;
-	void deleteNode(int key) override; // дописать 
+	Node* deleteNode(Node* root, int key) override; // дописать 
 
 
 	Node* copy(Node* node) override; // дописать

@@ -80,14 +80,14 @@ void BinaryTree::setRoot(Node* newroot)
 	this->root = newroot;
 }
 
-void BinaryTree::deleteNode(int key)
+Node* BinaryTree::deleteNode(Node* root, int key)
 {
 	Node* newNode = search(key);
 	if (newNode != nullptr)
 	{
 		if (isLeaf(newNode))
 		{
-			deleteNode(key);
+			//deleteNode(key);
 		}
 
 		else if (newNode->right != nullptr && newNode->left != nullptr)
