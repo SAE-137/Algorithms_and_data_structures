@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.33214.272
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BinaryTree", "BinaryTree\BinaryTree.vcxproj", "{957AB7C6-FC87-4EA6-8C28-520DB80C158E}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BInarySearchTree", "BInarySearchTree\BInarySearchTree.vcxproj", "{16D45BE8-1089-4DDE-98A0-6B447C9B9521}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -21,6 +23,14 @@ Global
 		{957AB7C6-FC87-4EA6-8C28-520DB80C158E}.Release|x64.Build.0 = Release|x64
 		{957AB7C6-FC87-4EA6-8C28-520DB80C158E}.Release|x86.ActiveCfg = Release|Win32
 		{957AB7C6-FC87-4EA6-8C28-520DB80C158E}.Release|x86.Build.0 = Release|Win32
+		{16D45BE8-1089-4DDE-98A0-6B447C9B9521}.Debug|x64.ActiveCfg = Debug|x64
+		{16D45BE8-1089-4DDE-98A0-6B447C9B9521}.Debug|x64.Build.0 = Debug|x64
+		{16D45BE8-1089-4DDE-98A0-6B447C9B9521}.Debug|x86.ActiveCfg = Debug|Win32
+		{16D45BE8-1089-4DDE-98A0-6B447C9B9521}.Debug|x86.Build.0 = Debug|Win32
+		{16D45BE8-1089-4DDE-98A0-6B447C9B9521}.Release|x64.ActiveCfg = Release|x64
+		{16D45BE8-1089-4DDE-98A0-6B447C9B9521}.Release|x64.Build.0 = Release|x64
+		{16D45BE8-1089-4DDE-98A0-6B447C9B9521}.Release|x86.ActiveCfg = Release|Win32
+		{16D45BE8-1089-4DDE-98A0-6B447C9B9521}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

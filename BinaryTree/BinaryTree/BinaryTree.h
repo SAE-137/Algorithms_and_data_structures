@@ -1,5 +1,5 @@
 #pragma once
-#include"Node.h"
+
 #include<iostream>
 #include <vector>
 struct Trunk
@@ -22,6 +22,38 @@ struct Trunk
 class BinaryTree
 {
 public:
+	class Node
+	{
+	public:
+		Node();
+		Node(int key, Node* left, Node* right, Node* parent);
+		Node(int key);
+		~Node() = default;
+
+		int getKey();
+
+		Node* getLeftChild();
+		Node* getRightChild();
+		Node* getParent();
+
+
+
+		void setKey(int key);
+		void setLeftChild(Node* left);
+		void setRightChild(Node* right);
+		void setParent(Node* parent);
+
+		int m_key = 0;
+		int height = 1;
+
+		Node* parent = nullptr;
+		Node* right = nullptr;
+		Node* left = nullptr;
+
+
+		
+
+	};
 	BinaryTree();
 	BinaryTree(const BinaryTree& obj);
 	~BinaryTree();
@@ -54,7 +86,7 @@ public:
 	virtual Node* copy(Node* node);
 	Node* search(int key, Node* leaf);
 	Node* getRoot();
-	Node* crossingTree(Node* root);
+	virtual Node* crossingTree(Node* root);
 
 	BinaryTree* copyTree(Node* node);
 	BinaryTree& operator=(const BinaryTree& obj);
@@ -62,7 +94,7 @@ public:
 
 	std::vector<int> treeprint(Node* tree);
 
-protected:
+
 	Node* root = nullptr;
 	Trunk trunk;
 

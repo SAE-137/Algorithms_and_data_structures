@@ -56,7 +56,7 @@ void BinaryTree::addNode(int data)
 
 
 
-Node* BinaryTree::crossingTree(Node* node)
+BinaryTree::Node* BinaryTree::crossingTree(Node* node)
 {
 	
 	if(node == nullptr)
@@ -80,64 +80,25 @@ void BinaryTree::setRoot(Node* newroot)
 	this->root = newroot;
 }
 
-Node* BinaryTree::deleteNode(Node* root, int key)
+BinaryTree::Node* BinaryTree::deleteNode(Node* root, int key)
 {
-	Node* newNode = search(key);
-	if (newNode != nullptr)
-	{
-		if (isLeaf(newNode))
-		{
-			//deleteNode(key);
+	if (root)
+		if (key < root->m_key) root->left = deleteNode(root->left, key);
+		else if (key > root->m_key) root->right = deleteNode(root->right, key);
+		else {
+			if (!root->left && !root->right) return nullptr;
+			if (!root->left || !root->right)
+				return root->left ? root->left : root->right;
+
+			Node* newNode = root->left;
+			while (newNode->right != nullptr) newNode = newNode->right;
+			root->m_key = newNode->m_key;
+			root->left = deleteNode(root->left, newNode->m_key);
 		}
-
-		else if (newNode->right != nullptr && newNode->left != nullptr)
-		{
-			Node* leaf = newNode;
-			for (leaf; leaf != nullptr;)
-				leaf = leaf->right;
-			if (leaf->getParent()->right == leaf)
-				leaf->getParent()->right = nullptr;
-			else leaf->getParent()->left = nullptr;
-
-			if(newNode->getParent()->right = newNode)
-				newNode->getParent()->right = leaf;
-			else newNode->getParent()->left = leaf;
-
-			leaf->setParent(newNode->getParent());
-			leaf->setLeftChild(newNode->getLeftChild());
-			leaf->setRightChild(newNode->getRightChild());
-		}
-
-		else
-		{
-			if (newNode->right != nullptr && newNode->left == nullptr)
-			{
-				newNode->right->setParent(newNode->getParent());
-
-				if (newNode->getParent()->right == newNode)
-				{
-					newNode->getParent()->right = newNode->right;
-				}
-				
-			}
-
-			else
-			{
-				newNode->left->setParent(newNode->getParent());
-
-				if (newNode->getParent()->left == newNode)
-				{
-					newNode->getParent()->left = newNode->left;
-				}
-				
-			}
-
-		}
-		delete newNode;
-	}
+	return root;
 }
 
-Node* BinaryTree::getRoot()
+BinaryTree::Node* BinaryTree::getRoot()
 {
 	return this->root;
 }
@@ -183,7 +144,7 @@ void BinaryTree::insert(int key)
 	}
 }
 
-Node* BinaryTree::search(int key, Node* root)
+BinaryTree::Node* BinaryTree::search(int key, Node* root)
 {
 	if (root != nullptr)
 	{
@@ -197,7 +158,7 @@ Node* BinaryTree::search(int key, Node* root)
 	else return nullptr;
 }
 
-Node* BinaryTree::search(int key)
+BinaryTree::Node* BinaryTree::search(int key)
 {
 	return search(key, root);
 }
@@ -393,7 +354,7 @@ void BinaryTree::printLeafs(Node* node)
 	printLeafs(node->right);
 }
 
-Node* BinaryTree::copy(Node* node)
+BinaryTree::Node* BinaryTree::copy(Node* node)
 {
 
 	if (node == nullptr)
@@ -435,4 +396,77 @@ BinaryTree& BinaryTree::operator=(const BinaryTree& obj)
 	}
 	this->ultimateSuperMegaFullDestroy();
 	return *this;
+}
+
+
+
+
+
+
+
+
+//Node
+BinaryTree::Node::Node()
+{
+
+	m_key = 0;
+	left = nullptr;
+	right = nullptr;
+	parent = nullptr;
+	int height = 1;
+}
+
+BinaryTree::Node::Node(int key, Node* left, Node* right, Node* parent)
+{
+	this->right = right;
+	this->parent = parent;
+	this->left = left;
+	m_key = key;
+}
+
+BinaryTree::Node::Node(int key)
+{
+	m_key = key;
+}
+BinaryTree::Node* BinaryTree::Node::getLeftChild()
+{
+	return this->left;
+}
+
+BinaryTree::Node* BinaryTree::Node::getRightChild()
+{
+	return this->right;
+}
+
+BinaryTree::Node* BinaryTree::Node::getParent()
+{
+	return this->parent;
+}
+
+void BinaryTree::Node::setLeftChild(Node* left)
+{
+	this->left = left;
+	left->parent = this;
+}
+
+void BinaryTree::Node::setRightChild(Node* right)
+{
+	this->right = right;
+	right->parent = this;
+}
+
+void BinaryTree::Node::setParent(Node* parent)
+{
+	this->parent = parent;
+
+}
+
+void BinaryTree::Node::setKey(int key)
+{
+	m_key = key;
+}
+
+int BinaryTree::Node::getKey()
+{
+	return m_key;
 }

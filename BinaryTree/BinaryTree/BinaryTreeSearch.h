@@ -1,26 +1,30 @@
+#include "BinaryTree.h"
 #pragma once
 
-#include"Node.h"
-#include "BinaryTree.h"
 
-class BinaryTreeSearch : BinaryTree
+
+
+class BinaryTreeSearch : public BinaryTree
 {
+
+
+	int foo(int k);
 	BinaryTreeSearch();
-	~BinaryTreeSearch(); // дописать 
+	~BinaryTreeSearch(); 
 
+
+	int maxKey(Node* node);
+	int minKey(Node* node);
 	void addNode(int data) override;
+	BinaryTree::Node* crossingTree(Node* node);
+	int nodeLevel(int key);
+	Node* search(int key);
+	Node* deleteNode(Node* root, int key)override;
+	Node* copy(Node* node);
+	BinaryTreeSearch* copyTree(Node* node);
 	void destroy_tree(Node* leaf);
-
-	int maxKey(Node* node) override;
-	int minKey(Node* node) override;
-	int nodeLevel(int key) override;
-
-	Node* crossingTree(Node* node); //переписать
-	Node* copy(Node* node) override; 
-	Node* search(int key) override;
-	Node* deleteNode(Node* root, int key) override;
-
-	BinaryTreeSearch* copyTree(Node* node); 
-	BinaryTreeSearch& operator=(const BinaryTreeSearch& obj) //дописать;
+	void setRoot(Node* newroot);
+	//BinaryTreeSearch& operator=(const BinaryTreeSearch& obj);
+	
 };
 
